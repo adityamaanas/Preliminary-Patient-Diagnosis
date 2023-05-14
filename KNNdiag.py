@@ -35,3 +35,7 @@ print("Mapping of Label Encoded Classes", label_encoder_name_mapping, sep="\n")
 print("Label Encoded Target Variable", encoded_X, sep="\n")
 #endregion label encoding
 #endregion preprocessing
+
+#region KNN
+import math
+#endregion KNN
