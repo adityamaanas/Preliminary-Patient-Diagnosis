@@ -38,4 +38,9 @@ print("Label Encoded Target Variable", encoded_X, sep="\n")
 
 #region KNN
 import math
+def euclidean_distance(point1, point2):
+    sum_squared_distance = 0
+    for i in range(len(point1)):
+        sum_squared_distance += math.pow(point1[i] - point2[i], 2)
+    return math.sqrt(sum_squared_distance)
 #endregion KNN
