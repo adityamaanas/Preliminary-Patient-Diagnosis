@@ -4,8 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #region dataset import
-df = pd.read_csv('C:/Users/adipi/OneDrive - Amrita vishwa vidyapeetham\
-                 /Repos/openlab/englishtraining.csv')
+df = pd.read_csv('DiseasesToSymptoms.csv')
 df.head()
 #endregion
 
@@ -13,16 +12,6 @@ df.head()
     #dropping the disease code column
 df.drop(df.columns[[0]], axis=1, inplace=True)
 df.head()
-
-    #creating a second dataframe
-df2 = pd.read_csv('C:/Users/adipi/OneDrive - Amrita vishwa vidyapeetham\
-                 /Repos/openlab/englishtraining.csv')
-df2.drop(df2.columns[[0]], axis=1, inplace=True)
-df2.head()
-
-#def flatten(listOfLists):
-#    "Flatten one level of nesting"
-#    return chain.from_iterable(listOfLists)
 
 #region label encoding
 #from sklearn.preprocessing import LabelEncoder
@@ -38,6 +27,7 @@ df2.head()
 
 #region KNN
 import math
+
 def euclidean_distance(point1, point2):
     sum_squared_distance = 0
     for i in range(len(point1)):
@@ -73,6 +63,14 @@ def knn(data, query, k, distance_fn, choice_fn):
 #region KNN test
 temp = df.iloc[3,1:]
 print(list(temp))
+print(len(temp))
+
+temp2 = [0] * 404
+
+temp2[4] = 1
+temp2[5] = 1
+temp2[6] = 1
+temp2[396] = 1
 
 temp[12] = 1
 temp[37] = 1
@@ -80,7 +78,7 @@ temp[112] = 0
 
 def diagnose(symptoms, k_recommendations):
     dataset = []
-    with open('/content/drive/MyDrive/DiseasesToSymptoms.csv', 'r') as md:
+    with open('DiseasesToSymptoms.csv', 'r') as md:
         # Discard the first line (headings)
         next(md)
 
