@@ -109,7 +109,7 @@ def diagnose(symptoms, k_recommendations):
     return final
 
 if __name__ == '__main__':
-    disease_x = temp # feature vector for
+    disease_x = temp # feature vector for disease x
     a = diagnose(symptoms=disease_x, k_recommendations=3)
 
     # Print recommended movie titles
