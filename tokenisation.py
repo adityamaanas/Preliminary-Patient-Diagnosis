@@ -4,7 +4,30 @@ from tabulate import tabulate
 df = pd.read_json(r'english-train.json')
 #print(df.head())
 #print(df.info())
-print(df.iloc[0,0])
-print(df.iloc[0,1])
+print(df.iloc[2,0])
+print(df.iloc[2,1])
 
-# 
+# Tokenisation
+import spacy
+from spacy import displacy
+
+med7 = spacy.load("en_ner_bc5cdr_md")
+print(med7.get_pipe("ner").labels)
+
+# create distinct colours for labels
+col_dict = {}
+seven_colours = ['#e6194B', '#3cb44b', '#ffe119', '#ffd8b1', '#f58231', '#f032e6', '#42d4f4']
+for label, colour in zip(med7.pipe_labels['ner'], seven_colours):
+    col_dict[label] = colour
+
+options = {'ents': med7.pipe_labels['ner'], 'colors':col_dict}
+
+#text = 'A patient was prescribed Magnesium hydroxide 400mg/5ml suspension PO of total 30ml bid for the next 5 days.'
+text = str(df.iloc[2,1])
+doc = med7(text)
+
+filtered_entities = [ent.text for ent in doc.ents if ent.label_ in ["DISEASE", "SYMPTOM"]]
+print(filtered_entities)
+print(displacy.render(doc, style='ent', jupyter=True, options=options))
+
+[(ent.text, ent.label_) for ent in doc.ents]
