@@ -26,5 +26,7 @@ def STT():
         except sr.RequestError as e:
              print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
+    return r.recognize_google(audio_text)
+
 if __name__ == "__main__":
     STT()
