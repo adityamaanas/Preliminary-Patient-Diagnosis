@@ -6,6 +6,7 @@ from sklearn.model_selection import GridSearchCV
 
 # Load the data
 data = pd.read_csv('englishtraining.csv')
+#print(data.head())
 
 # Clean the data
 data = data.dropna()
