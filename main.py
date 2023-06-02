@@ -1,4 +1,5 @@
 import English_STT
+#import tokenisation_bc5cdr as tokenisation
 import tokenisation_bc5cdr as tokenisation
 
 txt = English_STT.STT()
