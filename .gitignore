@@ -1,2 +1,4 @@
 olvenv/
 __pycache__/
+glove.6B.zip
+glove.6B.100d.txt
