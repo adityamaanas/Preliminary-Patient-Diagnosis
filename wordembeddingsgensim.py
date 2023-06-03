@@ -66,3 +66,27 @@ for sentence in tokenized_data:
 
 #print(embeddings)
 # endregion creating word embeddings
+
+# add the embeddings to the dataframe
+data['Embeddings'] = embeddings
+
+# Pad the word embeddings to the same length
+
+max_length = max(len(embedding) for embedding in embeddings)
+padded_embeddings = []
+
+for embedding in embeddings:
+    if len(embedding) < max_length:
+        padding = [np.zeros(100)] * (max_length - len(embedding))
+        padded_embedding = embedding + padding
+    else:
+        padded_embedding = embedding[:max_length]
+    
+    padded_embeddings.append(padded_embedding)
+
+# Convert the padded embeddings to numpy array
+padded_embeddings = np.array(padded_embeddings)
+
+# find the length of each embedding
+for embedding in padded_embeddings:
+    print(len(embedding))
