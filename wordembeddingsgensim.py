@@ -25,7 +25,7 @@ import gensim
 from gensim.models import KeyedVectors
 
 # Path to the pre-trained GloVe embeddings file
-glove_file = "C:/Users/adipi/OneDrive - Amrita vishwa vidyapeetham/Repos/openlab/glove.6B.100d.txt"
+glove_file = "D:/Files/repos/openlab/glove.6B.100d.txt"
 
 # Load GloVe embeddings
 glove_model = KeyedVectors.load_word2vec_format(glove_file, binary=False)
