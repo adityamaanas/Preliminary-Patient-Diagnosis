@@ -1,10 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier, BaggingClassifier
-from sklearn.feature_extraction import FeatureHasher
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import LabelEncoder
 import warnings
 
 # Filter out the warning
@@ -49,7 +47,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_encoded, y, test_size=0.2,
 
 # Create and train the Random Forest Classifier
 model = RandomForestClassifier(n_estimators=25, max_depth=2, min_samples_leaf=47, random_state=42)
-bagging_classifier = BaggingClassifier(estimator=model, n_estimators=10, random_state=42)
+bagging_classifier = BaggingClassifier(estimator=model, n_estimators=30, random_state=42)
 bagging_classifier.fit(X_train, y_train)
 
 # Make predictions on the test set
@@ -60,7 +58,8 @@ accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
 # Take a list of symptoms as input
-input_symptoms = ['fatigue', 'weight_loss', 'restlessness', 'lethargy', 'irregular_sugar_level', 'blurred_and_distorted_vision', 'obesity', 'excessive_hunger', 'increased_appetite', 'polyuria']
+input_symptoms = ['fatigue', 'weight_loss', 'lethargy', 'irregular_sugar_level', 'blurred_and_distorted_vision', 'obesity', 'excessive_hunger', 'increased_appetite', 'polyuria']
+
 # convert the input symptoms to strings and convert them to lower case
 input_symptoms = [str(item).lower() for item in input_symptoms]
 
